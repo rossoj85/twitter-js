@@ -6,24 +6,24 @@ const nunjucks = require('nunjucks')
 
 
 
-
+//NUNCHUCKS CONFIGURATIONS
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
 nunjucks.configure('views');
 nunjucks.configure('views', { noCache: true }) 
 
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Jason'},
-        { name: 'Sujin' },
-        { name: 'Hermione'}
-    ]
-};
-nunjucks.configure('views', {noCache: true});
-nunjucks.render('index.html', locals, function (err, output) {
-    console.log(output);
-});
+// var locals = {
+//     title: 'An Example',
+//     people: [
+//         { name: 'Jason'},
+//         { name: 'Sujin' },
+//         { name: 'Hermione'}
+//     ]
+// };
+// nunjucks.configure('views', {noCache: true});
+// nunjucks.render('index.html', locals, function (err, output) {
+//     console.log(output);
+// });
 
 
 // app.use(function(req,res,next){
@@ -33,13 +33,17 @@ nunjucks.render('index.html', locals, function (err, output) {
 // })
 
 // app.use(morgan('dev'))////for some reason this si useless
-
+var data = []
 
 
 app.get('/', function (req, res,next) {
-    const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-    res.render( 'index', {title: 'All Users', people: people} );
-  next()
+    const people = [{name: 'Jason'}, {name: 'Sujin'}, {name: 'Bobby'}];
+    res.render( 'index', {title: 'All Users', people: people}, function(err, html){
+        if (err) console.log(err)
+        res.send(html)
+    } );
+    
+  next();
 })
 app.get('/Jason',function(req,res, next){
     req.message = "Welcome to the News Page"
