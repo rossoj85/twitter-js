@@ -1,9 +1,12 @@
 const _ =require('lodash');
 
-let data = [{name: 'Jason Rosso', content: 'Hello world'}]
+let data = [{name: 'Jason', content: 'Hello world', id: 0}]
+let idCount=1
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+  
+  data.push({ name: name, content: content, id: idCount});
+  idCount++
 }
 
 function list () {
@@ -36,5 +39,4 @@ for (let i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-//console.log(data)
 console.log(data)

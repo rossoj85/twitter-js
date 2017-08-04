@@ -1,3 +1,6 @@
+// aks about stage 7 and how express static works?
+//why is listneing on port 300 not logging on the bottom?
+
 const express = require('express');
 const app = express();
 const chalk =require('chalk');
@@ -5,7 +8,7 @@ const morgan =require('morgan')
 const nunjucks = require('nunjucks')
 const db = require('./tweetbank.js')
 const routes = require('./routes')
-console.log('db', db) 
+// console.log('db', db) 
 
 
 //NUNCHUCKS CONFIGURATIONS
@@ -64,4 +67,5 @@ app.listen(3000, function () {
 })
 
 app.use('/',routes);
-app.use(express.static('public'))   ///ask about the order of calling middle ware  and other use statements
+app.use(express.static('public'))   ///ask about the order of calling middle ware  and other use statements.
+// How is express startic working? --- explains in stage 7
